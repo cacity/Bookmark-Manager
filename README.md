@@ -1,4 +1,4 @@
-# Chrome书签管理插件
+# 书签管家 (Bookmark Manager)
 
 ## 功能介绍
 这是一个Chrome浏览器扩展，用于高效管理你的书签。它能够：
@@ -11,6 +11,7 @@
 6. **书签勾选**：每个书签前有勾选框，可选择多个书签进行批量操作
 7. **分类标签显示**：在书签列表中显示每个书签所属的分类，方便快速识别
 8. **书签导出功能**：支持将书签数据导出为HTML、CSV和JSON格式
+9. **完全本地化**：所有数据处理和存储均在本地完成，不涉及网络传输，保护用户隐私
 
 ## 使用方法
 1. 安装插件后，在Chrome浏览器右上角会出现一个书签图标
@@ -53,21 +54,33 @@
 - 使用Chrome Bookmarks API获取原始书签数据
 - 使用Chrome Alarms API实现定期自动同步
 - 使用Chrome SidePanel API实现侧边栏功能
+- 使用Chrome Downloads API实现书签导出功能
+
+## 权限说明
+本扩展仅使用以下必要权限：
+- **bookmarks**: 用于读取与管理书签数据
+- **storage**: 用于保存插件设置和分类数据
+- **sidePanel**: 用于在侧边栏中显示书签界面
+- **alarms**: 用于定时同步和自动分类
+- **downloads**: 用于导出书签为HTML/CSV/JSON文件
+
+所有数据处理均在本地完成，不涉及网络传输，充分保护用户隐私。详细隐私政策请查看扩展中的privacy.html文件。
 
 ## 项目结构
 ```
-chrome书签插件/
-├── images/             # 插件图标和界面图片
-├── manifest.json       # 插件配置文件
-├── popup.html          # 弹出窗口HTML
-├── popup.js            # 弹出窗口JavaScript
-├── popup.css           # 弹出窗口样式
-├── sidebar.html        # 侧边栏HTML
-├── sidebar.js          # 侧边栏JavaScript
-├── sidebar.css         # 侧边栏样式
-├── background.js       # 后台脚本
-├── fix_all_issues.js   # 修复问题的脚本
-├── fix_category.js     # 修复分类功能的脚本
+书签管家/
+├── chrome/              # 主要代码目录
+│   ├── images/          # 插件图标和界面图片
+│   ├── manifest.json    # 插件配置文件
+│   ├── popup.html       # 弹出窗口HTML
+│   ├── popup.js         # 弹出窗口JavaScript
+│   ├── popup.css        # 弹出窗口样式
+│   ├── sidebar.html     # 侧边栏HTML
+│   ├── sidebar.js       # 侧边栏JavaScript
+│   ├── sidebar.css      # 侧边栏样式
+│   ├── background.js    # 后台脚本
+│   └── exportBookmarks.js # 书签导出功能脚本
+├── privacy.html         # 隐私政策文件
 └── README.md           # 项目说明文档
 ```
 
@@ -85,6 +98,8 @@ chrome书签插件/
 - [x] 修复分类数量统计问题
 - [x] 实现书签导出功能（HTML/CSV/JSON格式）
 - [x] 在书签列表中显示分类标签
+- [x] 优化权限请求，只使用必要权限
+- [x] 新增完整的隐私政策文档
 
 ## 安装方法
 1. 在Chrome浏览器中打开 chrome://extensions/
